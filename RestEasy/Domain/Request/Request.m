@@ -56,6 +56,7 @@
 }
 
 #pragma mark - Synthetic getter/setters
+#pragma mark Content-Type
 - (NSString *) contentType
 {
     return [self headerWithName: @"Content-Type"].value;
@@ -64,22 +65,26 @@
 - (void) setContentType:(NSString *) contentType
 {
     Header *existingHeader = [self headerWithName: @"Content-Type"];
-    
+    // nil content-type means we're removing the header
     if(contentType == nil)
     {
         [_headers removeObject: existingHeader];
         return;
     }
     
-    if(existingHeader != nil) {
+    // if an existing header exists, update it
+    if(existingHeader != nil)
+    {
         existingHeader.value = contentType;
         return;
     }
     
+    // otherwise create it and insert it as the very first
     Header *header = [Header headerWithName: @"Content-Type" value: contentType];
     [_headers insertObject: header atIndex: 0];
 }
 
+#pragma mark Accept
 - (NSString *) accept
 {
     return [self headerWithName: @"Accept"].value;
@@ -89,25 +94,29 @@
 {
     Header *existingHeader = [self headerWithName: @"Accept"];
     
+    // nil accept means we should remove the header, so do that
     if(accept == nil)
     {
         [_headers removeObject: existingHeader];
         return;
     }
     
-    if(existingHeader != nil) {
+    // a header already exist, just update it
+    if(existingHeader != nil)
+    {
         existingHeader.value = accept;
         return;
     }
     
+    // otherwise we have to create a header
     Header *header = [Header headerWithName: @"Accept" value: accept];
-    
-    // insert accept AFTER content type
-    Header *contentType = [self headerWithName: @"Content-Type"];
-    NSInteger index = contentType != nil ? 1 : 0;
+    // and insert it AFTER content type
+    NSInteger contentTypeIndex = [_headers indexOfObject: [self headerWithName: @"Content-Type"]];
+    NSInteger index = contentTypeIndex != NSNotFound ? contentTypeIndex + 1 : 0;
     [_headers insertObject: header atIndex: index];
 }
 
+#pragma mark - Headers <-> String conversion
 - (NSString *) headersString
 {
     NSMutableArray *components = [NSMutableArray arrayWithCapacity: _headers.count];
