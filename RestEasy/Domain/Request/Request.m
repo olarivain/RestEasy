@@ -8,32 +8,35 @@
 
 #import "Request.h"
 
+#import "Header.h"
+
+@interface Request ()
+@property (nonatomic, readwrite) NSMutableArray *headers;
+@end
+
 @implementation Request
 
-+ (Request *) requestWithURL: (NSURL *) url
-                      method: (RequestMethod) method
-                     headers: (NSDictionary *) headers
-                        body: (id) body
++ (Request *) request
 {
-    return [[self alloc] initWithURL: url method: method headers: headers body: body];
+    return [[self alloc] init];
 }
 
 + (NSString *) stringFromMethod: (RequestMethod) method
 {
     switch (method) {
-        case GET:
+        case RequestMethodGet:
             return @"GET";
             break;
-        case POST:
+        case RequestMethodPost:
             return @"POST";
             break;
-        case PUT:
+        case RequestMethodPut:
             return @"PUT";
             break;
-        case DELETE:
+        case RequestMethodDelete:
             return @"DELETE";
             break;
-        case HEAD:
+        case RequestMethodHead:
             return @"HEAD";
             break;
         default:
@@ -42,34 +45,98 @@
     return nil;
 }
 
-- (id) initWithURL: (NSURL *) url
-            method: (RequestMethod) method
-           headers: (NSDictionary *) headers
-              body: (id) body
+- (id) init
 {
-	self = [super init];
+    self = [super init];
     if(self)
     {
-        NSAssert(url != nil, @"URL can't be nil");
-        self.url = url;
-        self.method = method;
-        
-        self.headers = headers;
-        
-        BOOL bodyIsData = [body isKindOfClass: NSData.class];
-        BOOL bodyIsString = [body isKindOfClass: NSString.class];
-        NSAssert(bodyIsData || bodyIsString, @"Body must be either a string or a data");
-        
-        if(bodyIsData) {
-            self.body = (NSData *) body;
-        } else {
-            self.body = [(NSString *) body dataUsingEncoding: NSUTF8StringEncoding];
-        }
+        self.headers = [NSMutableArray arrayWithCapacity: 5];
     }
-    
     return self;
 }
 
+#pragma mark - Synthetic getter/setters
+- (NSString *) contentType
+{
+    return [self headerWithName: @"Content-Type"].value;
+}
+
+- (void) setContentType:(NSString *) contentType
+{
+    Header *existingHeader = [self headerWithName: @"Content-Type"];
+    
+    if(contentType == nil)
+    {
+        [_headers removeObject: existingHeader];
+        return;
+    }
+    
+    if(existingHeader != nil) {
+        existingHeader.value = contentType;
+        return;
+    }
+    
+    Header *header = [Header headerWithName: @"Content-Type" value: contentType];
+    [_headers insertObject: header atIndex: 0];
+}
+
+- (NSString *) accept
+{
+    return [self headerWithName: @"Accept"].value;
+}
+
+- (void) setAccept:(NSString *)accept
+{
+    Header *existingHeader = [self headerWithName: @"Accept"];
+    
+    if(accept == nil)
+    {
+        [_headers removeObject: existingHeader];
+        return;
+    }
+    
+    if(existingHeader != nil) {
+        existingHeader.value = accept;
+        return;
+    }
+    
+    Header *header = [Header headerWithName: @"Accept" value: accept];
+    
+    // insert accept AFTER content type
+    Header *contentType = [self headerWithName: @"Content-Type"];
+    NSInteger index = contentType != nil ? 1 : 0;
+    [_headers insertObject: header atIndex: index];
+}
+
+- (NSString *) headersString
+{
+    NSMutableArray *components = [NSMutableArray arrayWithCapacity: _headers.count];
+    
+    for(Header *header in self.headers)
+    {
+        [components rez_addObject: [NSString stringWithFormat: @"%@: %@", header.name, header.value]];
+    }
+    
+    return [components componentsJoinedByString: @"\n"];
+}
+
+#pragma mark - Convenience
+- (Header *) headerWithName: (NSString *) name
+{
+    if(name == nil) {
+        return nil;
+    }
+    
+    for(Header *header in self.headers.copy) {
+        if([header.name caseInsensitiveCompare: name] == NSOrderedSame) {
+            return header;
+        }
+    }
+    
+    return nil;
+}
+
+#pragma mark - Description
 - (NSString *) description
 {
     NSMutableString *theDescription = [NSMutableString stringWithFormat:@"URL: %@\n", _url.absoluteString];

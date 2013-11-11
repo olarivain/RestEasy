@@ -24,7 +24,9 @@
 		0082D8AD18309A140055DF02 /* NSDictionary+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8AC18309A140055DF02 /* NSDictionary+Header.m */; };
 		0082D8B018309ADC0055DF02 /* NSArray+NilBoundSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8AF18309ADC0055DF02 /* NSArray+NilBoundSafe.m */; };
 		0082D8B318309C0F0055DF02 /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8B218309C0F0055DF02 /* NSDictionary+NilSafe.m */; };
+		00A8062A1830CA9E00C16F55 /* RequestStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A806291830CA9E00C16F55 /* RequestStore.m */; };
 		00E5D6651830B462003479B8 /* NSView+LayoutConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5D6641830B462003479B8 /* NSView+LayoutConstraints.m */; };
+		00E5D6681830BB74003479B8 /* Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E5D6671830BB74003479B8 /* Header.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +71,12 @@
 		0082D8AF18309ADC0055DF02 /* NSArray+NilBoundSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NilBoundSafe.m"; sourceTree = "<group>"; };
 		0082D8B118309C0F0055DF02 /* NSDictionary+NilSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NilSafe.h"; sourceTree = "<group>"; };
 		0082D8B218309C0F0055DF02 /* NSDictionary+NilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NilSafe.m"; sourceTree = "<group>"; };
+		00A806281830CA9E00C16F55 /* RequestStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestStore.h; sourceTree = "<group>"; };
+		00A806291830CA9E00C16F55 /* RequestStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestStore.m; sourceTree = "<group>"; };
 		00E5D6631830B462003479B8 /* NSView+LayoutConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+LayoutConstraints.h"; sourceTree = "<group>"; };
 		00E5D6641830B462003479B8 /* NSView+LayoutConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+LayoutConstraints.m"; sourceTree = "<group>"; };
+		00E5D6661830BB74003479B8 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		00E5D6671830BB74003479B8 /* Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Header.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,7 @@
 			children = (
 				0082D8A31830931F0055DF02 /* Categories */,
 				0082D89E18308C900055DF02 /* Domain */,
+				00A806271830CA9100C16F55 /* Store */,
 				0018F0B718308181001EC749 /* Home */,
 				0018F09518307985001EC749 /* AppDelegate.h */,
 				0018F09618307985001EC749 /* AppDelegate.m */,
@@ -202,6 +209,8 @@
 			children = (
 				0082D8A018308CB80055DF02 /* Request.h */,
 				0082D8A118308CB80055DF02 /* Request.m */,
+				00E5D6661830BB74003479B8 /* Header.h */,
+				00E5D6671830BB74003479B8 /* Header.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -220,6 +229,15 @@
 				00E5D6641830B462003479B8 /* NSView+LayoutConstraints.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		00A806271830CA9100C16F55 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				00A806281830CA9E00C16F55 /* RequestStore.h */,
+				00A806291830CA9E00C16F55 /* RequestStore.m */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,10 +342,12 @@
 				0018F0C51830831D001EC749 /* MainWindowController.m in Sources */,
 				0082D8A218308CB80055DF02 /* Request.m in Sources */,
 				00E5D6651830B462003479B8 /* NSView+LayoutConstraints.m in Sources */,
+				00A8062A1830CA9E00C16F55 /* RequestStore.m in Sources */,
 				0018F09718307985001EC749 /* AppDelegate.m in Sources */,
 				0082D8AD18309A140055DF02 /* NSDictionary+Header.m in Sources */,
 				0018F09018307985001EC749 /* main.m in Sources */,
 				0082D8B318309C0F0055DF02 /* NSDictionary+NilSafe.m in Sources */,
+				00E5D6681830BB74003479B8 /* Header.m in Sources */,
 				0082D8B018309ADC0055DF02 /* NSArray+NilBoundSafe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,24 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
+@class Header;
+
 typedef enum RequestMethod{
-    GET = 0,
-    POST = 1,
-    PUT = 2,
-    DELETE = 3,
-    HEAD = 4
+    RequestMethodUnknown = 0,
+    RequestMethodGet = 1,
+    RequestMethodPost = 2,
+    RequestMethodPut = 3,
+    RequestMethodDelete = 4,
+    RequestMethodHead = 5
 } RequestMethod;
 
 @interface Request : NSObject
+{
+    __strong NSMutableArray *_headers;
+}
 
-+ (Request *) requestWithURL: (NSURL *) url
-                      method: (RequestMethod) method
-                     headers: (NSDictionary *) headers
-                        body: (id) body;
++ (Request *) request;
 
 @property (nonatomic) NSURL *url;
 @property (nonatomic) RequestMethod method;
-@property (nonatomic) NSDictionary *headers;
+@property (nonatomic, readonly) NSArray *headers;
 @property (nonatomic) NSData *body;
+
+@property (nonatomic) NSString *contentType;
+@property (nonatomic) NSString *accept;
+
+@property (nonatomic, readonly) NSDictionary *headersDictionary;
+@property (nonatomic, readonly) NSString *headersString;
 
 @end

@@ -10,6 +10,7 @@
 
 #import "NSDictionary+Header.h"
 
+#import "RequestStore.h"
 #import "Request.h"
 
 @interface MainWindowController ()<NSWindowDelegate, NSSplitViewDelegate>
@@ -48,11 +49,14 @@
 -(void)windowDidLoad{
     [super windowDidLoad];
 	
-//	[self.splitView setHoldingPriority: NSLayoutPriorityDragThatCanResizeWindow forSubviewAtIndex: 0];
+    // setup the request
+    self.request = [RequestStore sharedInstance].currentRequest;
     
-    [self.metodBox selectItemAtIndex: 0];
-    [self.contentTypeBox selectItemAtIndex: 0];
-    [self.acceptBox selectItemAtIndex: 0];
+    // set the drop downs to decent default values
+    [self.metodBox selectItemAtIndex: self.request.method - 1];
+    [self.contentTypeBox selectItemWithObjectValue: self.request.contentType];
+    [self.acceptBox selectItemWithObjectValue: self.request.accept];
+    [self.requestHeadersTextView setString: self.request.headersString];
 }
 
 #pragma mark - button
@@ -62,7 +66,6 @@
 	[self.sendButton setEnabled: NO];
 	[self.cancelButton setEnabled: YES];
     
-    self.request = [self buildRequest];
     NSLog(@"Request:\n%@", self.request);
 }
 
@@ -73,22 +76,14 @@
 	[self.cancelButton setEnabled: NO];
 }
 
-#pragma mark - Request Building
-- (Request *) buildRequest {
-    NSString *urlString = self.urlTextField.stringValue;
-    NSURL *url = [NSURL URLWithString: urlString];
-    
-    NSInteger selectedMethod = [self.metodBox indexOfSelectedItem];
-    RequestMethod method = selectedMethod < 0 ? GET : (RequestMethod) selectedMethod;
-    
-    NSDictionary *headers = [NSDictionary rez_dictionaryFromHeaderString: self.requestHeadersTextView.string];
-    return [Request requestWithURL: url method: method headers: headers body: self.responseBodyTextView.string];
-}
-
 #pragma mark - NSWindowDelegate
+
+#define PROJECT_MIN_WIDTH 192
+#define REST_MIN_WIDTH 480
+
 -(CGSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-    CGFloat minWidth = self.projectView.rez_widthConstraint.constant + self.restView.rez_widthConstraint.constant;
+    CGFloat minWidth = PROJECT_MIN_WIDTH + REST_MIN_WIDTH;
     minWidth += self.splitView.dividerThickness;
     
     if(frameSize.width <= minWidth) {
@@ -108,10 +103,10 @@
 -(CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
 {
     // make sure the split view honors the rest view's min width
-    CGFloat maxPosition = self.window.frame.size.width - self.restView.rez_widthConstraint.constant;
+    CGFloat maxPosition = self.window.frame.size.width - REST_MIN_WIDTH;
     maxPosition -= self.splitView.dividerThickness;
     
-    CGFloat minPosition = self.projectView.rez_widthConstraint.constant;
+    CGFloat minPosition = PROJECT_MIN_WIDTH;
     minPosition += self.splitView.dividerThickness;
     
     if(proposedPosition <= minPosition) {
