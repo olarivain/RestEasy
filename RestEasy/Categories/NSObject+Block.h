@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (Block)
-- (void) performBlockOnMainQueue: (VoidBlock) block
-					   withDelay: (NSTimeInterval) delay;
+- (void) rez_performBlockOnMainQueue: (VoidBlock) block
+                           withDelay: (NSTimeInterval) delay;
 @end

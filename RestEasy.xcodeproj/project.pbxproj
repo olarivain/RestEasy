@@ -22,6 +22,9 @@
 		0018F0C71830857D001EC749 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0018F0C61830857D001EC749 /* MainWindowController.xib */; };
 		0082D8A218308CB80055DF02 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8A118308CB80055DF02 /* Request.m */; };
 		0082D8A9183093700055DF02 /* NSObject+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8A8183093700055DF02 /* NSObject+Block.m */; };
+		0082D8AD18309A140055DF02 /* NSDictionary+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8AC18309A140055DF02 /* NSDictionary+Header.m */; };
+		0082D8B018309ADC0055DF02 /* NSArray+NilBoundSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8AF18309ADC0055DF02 /* NSArray+NilBoundSafe.m */; };
+		0082D8B318309C0F0055DF02 /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8B218309C0F0055DF02 /* NSDictionary+NilSafe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,12 @@
 		0082D8A7183093700055DF02 /* NSObject+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Block.h"; sourceTree = "<group>"; };
 		0082D8A8183093700055DF02 /* NSObject+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Block.m"; sourceTree = "<group>"; };
 		0082D8AA183093840055DF02 /* Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
+		0082D8AB18309A140055DF02 /* NSDictionary+Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Header.h"; sourceTree = "<group>"; };
+		0082D8AC18309A140055DF02 /* NSDictionary+Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Header.m"; sourceTree = "<group>"; };
+		0082D8AE18309ADC0055DF02 /* NSArray+NilBoundSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NilBoundSafe.h"; sourceTree = "<group>"; };
+		0082D8AF18309ADC0055DF02 /* NSArray+NilBoundSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NilBoundSafe.m"; sourceTree = "<group>"; };
+		0082D8B118309C0F0055DF02 /* NSDictionary+NilSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NilSafe.h"; sourceTree = "<group>"; };
+		0082D8B218309C0F0055DF02 /* NSDictionary+NilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NilSafe.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +210,12 @@
 			isa = PBXGroup;
 			children = (
 				0082D8AA183093840055DF02 /* Blocks.h */,
+				0082D8AE18309ADC0055DF02 /* NSArray+NilBoundSafe.h */,
+				0082D8AF18309ADC0055DF02 /* NSArray+NilBoundSafe.m */,
+				0082D8B118309C0F0055DF02 /* NSDictionary+NilSafe.h */,
+				0082D8B218309C0F0055DF02 /* NSDictionary+NilSafe.m */,
+				0082D8AB18309A140055DF02 /* NSDictionary+Header.h */,
+				0082D8AC18309A140055DF02 /* NSDictionary+Header.m */,
 				0082D8A7183093700055DF02 /* NSObject+Block.h */,
 				0082D8A8183093700055DF02 /* NSObject+Block.m */,
 			);
@@ -309,8 +324,11 @@
 				0018F0C51830831D001EC749 /* MainWindowController.m in Sources */,
 				0082D8A218308CB80055DF02 /* Request.m in Sources */,
 				0018F09718307985001EC749 /* AppDelegate.m in Sources */,
+				0082D8AD18309A140055DF02 /* NSDictionary+Header.m in Sources */,
 				0018F09018307985001EC749 /* main.m in Sources */,
+				0082D8B318309C0F0055DF02 /* NSDictionary+NilSafe.m in Sources */,
 				0082D8A9183093700055DF02 /* NSObject+Block.m in Sources */,
+				0082D8B018309ADC0055DF02 /* NSArray+NilBoundSafe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,5 +9,7 @@
 
     #import "Blocks.h"
     #import "NSObject+Block.h"
+    #import "NSArray+NilBoundSafe.h"
+    #import "NSDictionary+NilSafe.h"
 
 #endif

@@ -10,7 +10,7 @@
 
 @implementation NSObject (Block)
 
-- (void) performBlockOnMainQueue: (VoidBlock) block
+- (void) rez_performBlockOnMainQueue: (VoidBlock) block
                        withDelay: (NSTimeInterval) delay {
     if(block == NULL) {
         return;

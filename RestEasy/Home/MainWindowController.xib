@@ -6,7 +6,18 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
+                <outlet property="acceptBox" destination="Lag-qh-ENQ" id="4u8-Vo-uqT"/>
+                <outlet property="cancelButton" destination="COt-A3-PcC" id="B2B-o1-5W2"/>
+                <outlet property="contentTypeBox" destination="hIt-XT-sap" id="w9b-5d-9aT"/>
                 <outlet property="drawer" destination="QzT-ck-mek" id="yo9-tI-sjx"/>
+                <outlet property="metodBox" destination="qYs-0B-fDF" id="76K-Av-MbP"/>
+                <outlet property="requestHeadersTextView" destination="0vp-iu-1BY" id="RVQ-YH-HHx"/>
+                <outlet property="responseActivityIndicator" destination="efW-fd-91n" id="VGn-Zl-eDi"/>
+                <outlet property="responseBodyTextView" destination="izU-j8-ik9" id="HsY-Vh-XMs"/>
+                <outlet property="responseHeaderTextView" destination="vxA-PO-Frj" id="30Q-OO-Ber"/>
+                <outlet property="responseTitle" destination="uoB-6y-j00" id="Zju-2b-cBM"/>
+                <outlet property="sendButton" destination="LvX-jR-EJZ" id="lwS-AB-8Cn"/>
+                <outlet property="urlTextField" destination="kkU-Tm-fcP" id="xh2-76-kbh"/>
                 <outlet property="window" destination="M02-si-e3S" id="edC-9L-r5M"/>
             </connections>
         </customObject>
@@ -20,7 +31,7 @@
             <value key="minSize" type="size" width="480" height="481"/>
             <view key="contentView" id="2e5-0G-jRe">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="481"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kkU-Tm-fcP" userLabel="URL Field">
                         <rect key="frame" x="20" y="439" width="440" height="22"/>
@@ -68,7 +79,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </comboBoxCell>
                     </comboBox>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qh-qv-xBl" userLabel="All Headers Box">
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qh-qv-xBl" userLabel="All Headers Text Field">
                         <rect key="frame" x="20" y="339" width="440" height="64"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="BMq-HE-MhY">
@@ -107,6 +118,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="startRequest:" target="-2" id="9QR-Ch-hR0"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="COt-A3-PcC" userLabel="Cancel Button">
                         <rect key="frame" x="313" y="291" width="82" height="32"/>
@@ -118,6 +132,9 @@
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancelRequest:" target="-2" id="lMy-dA-ECe"/>
+                        </connections>
                     </button>
                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="6Pt-fV-7Yp" userLabel="Separator">
                         <rect key="frame" x="20" y="275" width="440" height="5"/>
@@ -127,16 +144,16 @@ Gw
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uoB-6y-j00" userLabel="Response Title">
-                        <rect key="frame" x="20" y="252" width="85" height="17"/>
+                        <rect key="frame" x="20" y="252" width="63" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Response" id="8iU-4A-hfa">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Response" id="8iU-4A-hfa">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="efW-fd-91n">
-                        <rect key="frame" x="111" y="252" width="16" height="16"/>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="efW-fd-91n">
+                        <rect key="frame" x="89" y="252" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ5-ZI-EEP" userLabel="Response Header">
