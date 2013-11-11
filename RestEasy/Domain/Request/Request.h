@@ -10,10 +10,10 @@
 
 @interface Request : NSObject
 
-+ (Request *) requestWithURL: (NSURL *) url headers: (NSDictionary *) headers body: (id) body;
-
 @property (nonatomic) NSURL *url;
 @property (nonatomic) NSDictionary *headers;
 @property (nonatomic) NSData *body;
+
+- (id) initWithURL: (NSURL *) url headers: (NSDictionary *) headers body: (id) body;
 
 @end
