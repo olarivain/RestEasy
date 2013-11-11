@@ -10,7 +10,10 @@
 
 @implementation Request
 
-+ (Request *) requestWithURL: (NSURL *) url method: (RequestMethod) method headers: (NSDictionary *) headers body: (id) body
++ (Request *) requestWithURL: (NSURL *) url
+                      method: (RequestMethod) method
+                     headers: (NSDictionary *) headers
+                        body: (id) body
 {
     return [[self alloc] initWithURL: url method: method headers: headers body: body];
 }
@@ -39,7 +42,10 @@
     return nil;
 }
 
-- (id) initWithURL: (NSURL *) url method: (RequestMethod) method headers: (NSDictionary *) headers body: (id) body
+- (id) initWithURL: (NSURL *) url
+            method: (RequestMethod) method
+           headers: (NSDictionary *) headers
+              body: (id) body
 {
 	self = [super init];
     if(self)
@@ -47,6 +53,7 @@
         NSAssert(url != nil, @"URL can't be nil");
         self.url = url;
         self.method = method;
+        
         self.headers = headers;
         
         BOOL bodyIsData = [body isKindOfClass: NSData.class];

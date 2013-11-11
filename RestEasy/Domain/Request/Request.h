@@ -18,7 +18,10 @@ typedef enum RequestMethod{
 
 @interface Request : NSObject
 
-+ (Request *) requestWithURL: (NSURL *) url method: (RequestMethod) method headers: (NSDictionary *) headers body: (id) body;
++ (Request *) requestWithURL: (NSURL *) url
+                      method: (RequestMethod) method
+                     headers: (NSDictionary *) headers
+                        body: (id) body;
 
 @property (nonatomic) NSURL *url;
 @property (nonatomic) RequestMethod method;
