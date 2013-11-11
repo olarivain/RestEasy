@@ -21,6 +21,7 @@
 		0018F0C51830831D001EC749 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0018F0C41830831D001EC749 /* MainWindowController.m */; };
 		0018F0C71830857D001EC749 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0018F0C61830857D001EC749 /* MainWindowController.xib */; };
 		0082D8A218308CB80055DF02 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8A118308CB80055DF02 /* Request.m */; };
+		0082D8A9183093700055DF02 /* NSObject+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 0082D8A8183093700055DF02 /* NSObject+Block.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,9 @@
 		0018F0C61830857D001EC749 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = Home/MainWindowController.xib; sourceTree = "<group>"; };
 		0082D8A018308CB80055DF02 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		0082D8A118308CB80055DF02 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		0082D8A7183093700055DF02 /* NSObject+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Block.h"; sourceTree = "<group>"; };
+		0082D8A8183093700055DF02 /* NSObject+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Block.m"; sourceTree = "<group>"; };
+		0082D8AA183093840055DF02 /* Blocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blocks.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		0018F08918307985001EC749 /* RestEasy */ = {
 			isa = PBXGroup;
 			children = (
+				0082D8A31830931F0055DF02 /* Categories */,
 				0082D89E18308C900055DF02 /* Domain */,
 				0018F0B718308181001EC749 /* Home */,
 				0018F09518307985001EC749 /* AppDelegate.h */,
@@ -190,6 +195,16 @@
 				0082D8A118308CB80055DF02 /* Request.m */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		0082D8A31830931F0055DF02 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0082D8AA183093840055DF02 /* Blocks.h */,
+				0082D8A7183093700055DF02 /* NSObject+Block.h */,
+				0082D8A8183093700055DF02 /* NSObject+Block.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +310,7 @@
 				0082D8A218308CB80055DF02 /* Request.m in Sources */,
 				0018F09718307985001EC749 /* AppDelegate.m in Sources */,
 				0018F09018307985001EC749 /* main.m in Sources */,
+				0082D8A9183093700055DF02 /* NSObject+Block.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

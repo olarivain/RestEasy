@@ -18,7 +18,9 @@
 
 
 -(void)windowDidLoad{
-	[self.drawer open];
+    [self performBlockOnMainQueue:^{
+        	[self.drawer open];
+    } withDelay: 0.1];
 }
 
 @end

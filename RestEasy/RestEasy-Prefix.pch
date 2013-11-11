@@ -6,4 +6,8 @@
 
 #ifdef __OBJC__
 	#import <Cocoa/Cocoa.h>
+
+    #import "Blocks.h"
+    #import "NSObject+Block.h"
+
 #endif
